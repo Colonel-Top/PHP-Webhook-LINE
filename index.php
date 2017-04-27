@@ -7,9 +7,7 @@ $headers = array('Authorization: Bearer ' . $access_token);
 $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
-foreach ($events  as $topping) {
-    echo $topping, "\n";
-}
+echo $events
 /*
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
