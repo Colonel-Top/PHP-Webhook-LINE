@@ -5,7 +5,7 @@ $strAccessToken = "0qvyOtTrnXuu7moC1pMLdrFMvI+hth0vRlkqjByrquZG0HVcOzydiTgSSeceZ
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
  
-$strUrl = "https://api.line.me/v2/bot/message/reply";
+$strUrl = "https://api.line.me/v2/bot/message/push";
  
 $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
@@ -13,7 +13,8 @@ $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
  
 if($arrJson['events'][0]['message']['text'] == "getAPI"){
   $arrPostData = array();
-  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  //$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  $arrPostData['to'] = "Ufb00beda08083bcf402fbd2160b75574";
   $arrPostData['messages'][0]['type'] = "text";
   $arrPostData['messages'][0]['text'] = "API:".$arrJson['events'][0]['source']['groupId'];
 }
